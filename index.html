@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundPro - Магазин профессиональных наушников</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span>🎧</span>
+                    <span>SoundPro</span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                        <li><a href="catalog.html"><i class="fas fa-headphones"></i> Каталог</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> О компании</a></li>
+                        <li><a href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+                        <li><a href="register.html" id="loginLink"><i class="fas fa-user-plus"></i> Регистрация</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div>
+                        <div id="userName"></div>
+                        <a href="#" id="logoutLink">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="hero-section animate">
+                <h1 class="hero-title">Профессиональные наушники для работы и творчества</h1>
+                <p class="hero-description">
+                    SoundPro — ведущий магазин профессиональных наушников. Более 10 лет на рынке, 
+                    500+ моделей в наличии, гарантия качества и помощь в подборе.
+                </p>
+                <div class="hero-buttons">
+                    <a href="catalog.html" class="btn btn-accent">Смотреть каталог</a>
+                    <a href="register.html" class="btn">Зарегистрироваться</a>
+                </div>
+            </section>
+
+            <section class="news-section">
+                <h2 class="section-title">Новые поступления</h2>
+                <p class="section-subtitle">Самые актуальные модели этого месяца</p>
+                <div class="news-grid" id="newsGrid"></div>
+            </section>
+
+            <section class="features-section">
+                <h2 class="section-title">Почему выбирают нас</h2>
+                <div class="features-grid">
+                    <div class="feature-card animate">
+                        <div class="feature-icon">🚚</div>
+                        <h3 class="feature-title">Доставка по РФ</h3>
+                        <p class="feature-description">Быстрая доставка в любой регион России</p>
+                    </div>
+                    <div class="feature-card animate">
+                        <div class="feature-icon">🎧</div>
+                        <h3 class="feature-title">Прослушивание</h3>
+                        <p class="feature-description">Возможность протестировать наушники перед покупкой</p>
+                    </div>
+                    <div class="feature-card animate">
+                        <div class="feature-icon">💳</div>
+                        <h3 class="feature-title">Рассрочка</h3>
+                        <p class="feature-description">Гибкие условия рассрочки и кредитования</p>
+                    </div>
+                    <div class="feature-card animate">
+                        <div class="feature-icon">🔧</div>
+                        <h3 class="feature-title">Гарантия 2 года</h3>
+                        <p class="feature-description">Расширенная гарантия на всю продукцию</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo"><span>🎧</span><span>SoundPro</span></div>
+                    <p class="footer-description">Ведущий магазин профессиональных наушников. Продажа, консультации и сервис.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Контакты</h3>
+                    <p>+7 (928) 714-97-23</p>
+                    <p>info@soundpro.ru</p>
+                    <p>Нальчик, ул. Кулиева, д. 20</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Часы работы</h3>
+                    <p>Пн-Пт: 9:00-18:00</p>
+                    <p>Сб: 10:00-16:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SoundPro. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const equipment = JSON.parse(localStorage.getItem('equipment') || '[]');
+            const newsGrid = document.getElementById('newsGrid');
+            if (newsGrid && equipment.length > 0) {
+                newsGrid.innerHTML = equipment.slice(0, 4).map(item => `
+                    <article class="news-card animate" data-id="${item.id}">
+                        <div class="news-image-container">
+                            <img src="${item.image}" alt="${item.name}" class="news-image">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">${item.category}</span>
+                            <span class="news-date">Новинка</span>
+                            <h3 class="news-title">${item.name}</h3>
+                            <p class="news-description">${item.description}</p>
+                            <span class="news-link">Подробнее</span>
+                        </div>
+                    </article>
+                `).join('');
+                
+                document.querySelectorAll('.news-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const id = parseInt(this.dataset.id);
+                        const product = equipment.find(p => p.id === id);
+                        if (product) showProductModal(product);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

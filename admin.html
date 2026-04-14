@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundPro - Панель администратора</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="rejectModal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-title">Отклонение заявки</h3>
+            <div class="form-group">
+                <label for="rejectReason" class="form-label">Причина отклонения</label>
+                <textarea id="rejectReason" class="form-input" rows="4" placeholder="Укажите причину"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal('rejectModal')">Отмена</button>
+                <button class="btn btn-danger" onclick="confirmReject()">Отклонить</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span>🎧</span>
+                    <span>SoundPro</span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                        <li><a href="catalog.html"><i class="fas fa-headphones"></i> Каталог</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> О компании</a></li>
+                        <li><a href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info" id="userInfo">
+                    <div class="user-avatar" id="userAvatar">А</div>
+                    <div>
+                        <div id="userName">Администратор</div>
+                        <a href="#" id="logoutLink">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">Панель администратора</h1>
+            
+            <div class="admin-stats">
+                <div class="stat-card animate"><div class="stat-number" id="totalUsers">0</div><div class="stat-label">Пользователей</div></div>
+                <div class="stat-card animate"><div class="stat-number" id="totalRequests">0</div><div class="stat-label">Всего заявок</div></div>
+                <div class="stat-card animate"><div class="stat-number" id="newRequests">0</div><div class="stat-label">Новых заявок</div></div>
+                <div class="stat-card animate"><div class="stat-number" id="solvedRequests">0</div><div class="stat-label">Решенных</div></div>
+            </div>
+            
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="requests">Управление заявками</button>
+                <button class="tab-btn" data-tab="categories">Управление категориями</button>
+                <button class="tab-btn" data-tab="users">Пользователи</button>
+            </div>
+            
+            <div id="requestsTab" class="tab-content active">
+                <div class="requests-table">
+                    <table>
+                        <thead>
+                            <tr><th>ID</th><th>Дата</th><th>Пользователь</th><th>Название</th><th>Категория</th><th>Статус</th><th>Действия</th></tr>
+                        </thead>
+                        <tbody id="requestsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="categoriesTab" class="tab-content">
+                <div class="categories-manager">
+                    <h3>Категории услуг</h3>
+                    <div class="category-list" id="categoriesList"></div>
+                    <h3>Добавить категорию</h3>
+                    <div class="add-category-form">
+                        <input type="text" id="newCategoryName" class="add-category-input" placeholder="Название новой категории">
+                        <button class="btn btn-accent" id="addCategoryBtn"><i class="fas fa-plus"></i> Добавить</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="usersTab" class="tab-content">
+                <div class="requests-table">
+                    <table>
+                        <thead>
+                            <tr><th>ID</th><th>ФИО</th><th>Логин</th><th>Email</th><th>Роль</th><th>Заявок</th><th>Дата регистрации</th></tr>
+                        </thead>
+                        <tbody id="usersTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo"><span>🎧</span><span>SoundPro</span></div>
+                    <p class="footer-description">Ведущий магазин профессиональных наушников. Продажа, консультации и сервис.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Контакты</h3>
+                    <p>+7 (928) 714-97-23</p>
+                    <p>info@soundpro.ru</p>
+                    <p>Нальчик, ул. Кулиева, д. 20</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Часы работы</h3>
+                    <p>Пн-Пт: 9:00-18:00</p>
+                    <p>Сб: 10:00-16:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SoundPro. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

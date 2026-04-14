@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundPro - Каталог наушников</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span>🎧</span>
+                    <span>SoundPro</span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                        <li><a href="catalog.html"><i class="fas fa-headphones"></i> Каталог</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> О компании</a></li>
+                        <li><a href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+                        <li><a href="register.html" id="loginLink"><i class="fas fa-user-plus"></i> Регистрация</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div>
+                        <div id="userName"></div>
+                        <a href="#" id="logoutLink">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title text-center">Каталог наушников</h1>
+            <p class="page-subtitle">Более 500 моделей в наличии. Профессиональные наушники для любых задач.</p>
+            
+            <div class="catalog-filters">
+                <div class="filter-section">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Поиск наушников...">
+                        <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <h3 class="filter-title">Тип наушников</h3>
+                    <div class="filter-options" id="typeFilters"></div>
+                </div>
+                <div class="filter-section">
+                    <h3 class="filter-title">Цена</h3>
+                    <div class="filter-options" id="priceFilters">
+                        <button class="filter-btn" data-price="all">Все</button>
+                        <button class="filter-btn" data-price="low">До 10 000 ₽</button>
+                        <button class="filter-btn" data-price="medium">10 000 - 30 000 ₽</button>
+                        <button class="filter-btn" data-price="high">От 30 000 ₽</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="catalog-grid" id="equipmentGrid"></div>
+            
+            <div class="text-center mt-3">
+                <button class="btn btn-accent" id="loadMoreBtn"><i class="fas fa-sync-alt"></i> Показать еще</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo"><span>🎧</span><span>SoundPro</span></div>
+                    <p class="footer-description">Ведущий магазин профессиональных наушников. Продажа, консультации и сервис.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Контакты</h3>
+                    <p>+7 (928) 714-97-23</p>
+                    <p>info@soundpro.ru</p>
+                    <p>Нальчик, ул. Кулиева, д. 20</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Часы работы</h3>
+                    <p>Пн-Пт: 9:00-18:00</p>
+                    <p>Сб: 10:00-16:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SoundPro. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

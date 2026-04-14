@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundPro - Регистрация</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span>🎧</span>
+                    <span>SoundPro</span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                        <li><a href="catalog.html"><i class="fas fa-headphones"></i> Каталог</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> О компании</a></li>
+                        <li><a href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+                        <li><a href="register.html" id="loginLink"><i class="fas fa-user-plus"></i> Регистрация</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div>
+                        <div id="userName"></div>
+                        <a href="#" id="logoutLink">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Форма входа (изначально скрыта) -->
+            <div class="form-container" id="loginContainer" style="display: none;">
+                <h2 class="text-center mb-3">Вход в личный кабинет</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginInput" class="form-label">Логин</label>
+                        <input type="text" id="loginInput" class="form-input" placeholder="Введите логин" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordInput" class="form-label">Пароль</label>
+                        <input type="password" id="passwordInput" class="form-input" placeholder="Введите пароль" required>
+                    </div>
+                    <button type="submit" class="btn btn-accent btn-block">Войти</button>
+                    <p class="text-center text-muted mt-2" style="font-size: 0.875rem;">
+                        Тестовые: admin / admin<br>user / user123
+                    </p>
+                    <p class="text-center mt-2">
+                        <a href="#" id="showRegisterBtn">← Назад к регистрации</a>
+                    </p>
+                </form>
+            </div>
+
+            <!-- Форма регистрации -->
+            <div class="form-container" id="registerContainer">
+                <h2 class="text-center mb-3">Регистрация</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label required">ФИО</label>
+                        <input type="text" id="fullName" class="form-input" placeholder="Иванов Иван Иванович" required>
+                        <div class="error-message" id="fullNameError">ФИО должно содержать только кириллицу, дефис и пробелы</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login" class="form-label required">Логин</label>
+                        <input type="text" id="login" class="form-input" placeholder="Введите логин" required>
+                        <div class="error-message" id="loginError">Логин должен содержать только латиницу и цифры</div>
+                        <div class="success-message" id="loginSuccess">Логин доступен</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label required">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="example@mail.ru" required>
+                        <div class="error-message" id="emailError">Введите корректный email</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label required">Телефон</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="+7 (999) 123-45-67" required>
+                        <div class="error-message" id="phoneError">Введите корректный номер телефона</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label required">Пароль</label>
+                        <input type="password" id="password" class="form-input" placeholder="Не менее 6 символов" required>
+                        <div class="error-message" id="passwordError">Пароль должен содержать не менее 6 символов</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label required">Подтверждение пароля</label>
+                        <input type="password" id="confirmPassword" class="form-input" placeholder="Повторите пароль" required>
+                        <div class="error-message" id="confirmPasswordError">Пароли не совпадают</div>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="agree" class="form-check-input" required>
+                        <label for="agree" class="form-check-label">Я согласен на обработку персональных данных</label>
+                    </div>
+                    <div class="error-message" id="agreeError" style="margin-bottom: 1rem;">Необходимо согласие</div>
+                    <button type="submit" class="btn btn-accent btn-block">Зарегистрироваться</button>
+                    <p class="text-center mt-3">
+                        Уже есть аккаунт? <a href="#" id="showLoginBtn">Войти</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo"><span>🎧</span><span>SoundPro</span></div>
+                    <p class="footer-description">Ведущий магазин профессиональных наушников. Продажа, консультации и сервис.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Контакты</h3>
+                    <p>+7 (928) 714-97-23</p>
+                    <p>info@soundpro.ru</p>
+                    <p>Нальчик, ул. Кулиева, д. 20</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Часы работы</h3>
+                    <p>Пн-Пт: 9:00-18:00</p>
+                    <p>Сб: 10:00-16:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SoundPro. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginContainer = document.getElementById('loginContainer');
+            const registerContainer = document.getElementById('registerContainer');
+            const showLoginBtn = document.getElementById('showLoginBtn');
+            const showRegisterBtn = document.getElementById('showRegisterBtn');
+            
+            showLoginBtn?.addEventListener('click', function(e) {
+                e.preventDefault();
+                registerContainer.style.display = 'none';
+                loginContainer.style.display = 'block';
+            });
+            
+            showRegisterBtn?.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginContainer.style.display = 'none';
+                registerContainer.style.display = 'block';
+            });
+            
+            initLogin();
+        });
+    </script>
+</body>
+</html>
