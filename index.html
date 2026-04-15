@@ -15,7 +15,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
-                    <span>🎧</span>
+                    <img src="logo/logo.jpg" alt="SoundPro" class="logo-img">
                     <span>SoundPro</span>
                 </a>
                 <nav class="main-nav">
@@ -55,7 +55,60 @@
             <section class="news-section">
                 <h2 class="section-title">Новые поступления</h2>
                 <p class="section-subtitle">Самые актуальные модели этого месяца</p>
-                <div class="news-grid" id="newsGrid"></div>
+                <div class="news-grid" id="newsGrid">
+                    <!-- Карточка 1 -->
+                    <article class="news-card animate" data-id="1">
+                        <div class="news-image-container">
+                            <img src="images/Sony WH-1000XM5.jpg" alt="Sony WH-1000XM5" class="news-image" width="265" height="280">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Беспроводные</span>
+                            <span class="news-date">34 990 ₽</span>
+                            <h3 class="news-title">Sony WH-1000XM5</h3>
+                            <p class="news-description">Флагманские беспроводные наушники с лучшим в классе шумоподавлением.</p>
+                            <span class="news-link">Подробнее</span>
+                        </div>
+                    </article>
+                    <!-- Карточка 2 -->
+                    <article class="news-card animate" data-id="2">
+                        <div class="news-image-container">
+                            <img src="images/beyerdynamic-dt770.jpg" alt="Beyerdynamic DT 770 Pro" class="news-image" width="300" height="300">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Студийные</span>
+                            <span class="news-date">18 990 ₽</span>
+                            <h3 class="news-title">Beyerdynamic DT 770 Pro</h3>
+                            <p class="news-description">Легендарные студийные наушники для профессиональной работы со звуком.</p>
+                            <span class="news-link">Подробнее</span>
+                        </div>
+                    </article>
+                    <!-- Карточка 3 -->
+                    <article class="news-card animate" data-id="3">
+                        <div class="news-image-container">
+                            <img src="images/sennheiser-hd600.jpg" alt="Sennheiser HD 600" class="news-image" width="300" height="300">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Открытые</span>
+                            <span class="news-date">28 990 ₽</span>
+                            <h3 class="news-title">Sennheiser HD 600</h3>
+                            <p class="news-description">Эталонные открытые наушники для аудиофилов и профессионалов.</p>
+                            <span class="news-link">Подробнее</span>
+                        </div>
+                    </article>
+                    <!-- Карточка 4 -->
+                    <article class="news-card animate" data-id="4">
+                        <div class="news-image-container">
+                            <img src="images/audiotechnica-m50x.jpg" alt="Audio-Technica ATH-M50x" class="news-image" width="300" height="300">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Мониторные</span>
+                            <span class="news-date">15 990 ₽</span>
+                            <h3 class="news-title">Audio-Technica ATH-M50x</h3>
+                            <p class="news-description">Популярные мониторные наушники для студии и дома.</p>
+                            <span class="news-link">Подробнее</span>
+                        </div>
+                    </article>
+                </div>
             </section>
 
             <section class="features-section">
@@ -90,7 +143,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="logo"><span>🎧</span><span>SoundPro</span></div>
+                    <div class="logo">
+                        <img src="logo/logo.jpg" alt="SoundPro" class="logo-img">
+                        <span>SoundPro</span>
+                    </div>
                     <p class="footer-description">Ведущий магазин профессиональных наушников.</p>
                 </div>
                 <div class="footer-section">
@@ -113,35 +169,5 @@
     </footer>
 
     <script src="main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const equipment = JSON.parse(localStorage.getItem('equipment') || '[]');
-            const newsGrid = document.getElementById('newsGrid');
-            if (newsGrid && equipment.length > 0) {
-                newsGrid.innerHTML = equipment.slice(0, 4).map(item => `
-                    <article class="news-card animate" data-id="${item.id}">
-                        <div class="news-image-container">
-                            <img src="${item.image}" alt="${item.name}" class="news-image">
-                        </div>
-                        <div class="news-content">
-                            <span class="news-category">${item.category}</span>
-                            <span class="news-date">Новинка</span>
-                            <h3 class="news-title">${item.name}</h3>
-                            <p class="news-description">${item.description}</p>
-                            <span class="news-link">Подробнее</span>
-                        </div>
-                    </article>
-                `).join('');
-                
-                document.querySelectorAll('.news-card').forEach(card => {
-                    card.addEventListener('click', function() {
-                        const id = parseInt(this.dataset.id);
-                        const product = equipment.find(p => p.id === id);
-                        if (product) showProductModal(product);
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>
