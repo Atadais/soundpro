@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>SoundPro - Создание заявки</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,40 +41,30 @@
     <main class="main-content">
         <div class="container">
             <h1 class="page-title">Создание заявки</h1>
-            
             <div class="form-container" style="max-width: 700px;">
                 <form id="requestForm">
                     <div class="form-group">
                         <label for="requestTitle" class="form-label required">Название заявки</label>
                         <input type="text" id="requestTitle" class="form-input" placeholder="Например: Диагностика наушников Sony" required>
-                        <div class="error-message" id="titleError">Введите название заявки</div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="requestDescription" class="form-label required">Описание проблемы</label>
-                        <textarea id="requestDescription" class="form-textarea" placeholder="Опишите подробно, что случилось с наушниками, какие симптомы и т.д." required></textarea>
-                        <div class="error-message" id="descriptionError">Введите описание</div>
+                        <textarea id="requestDescription" class="form-textarea" placeholder="Опишите подробно, что случилось" required></textarea>
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label required">Вид услуги</label>
                         <div class="categories" id="categoriesContainer"></div>
                         <div class="error-message" id="categoryError">Выберите вид услуги</div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="requestAddress" class="form-label required">Адрес</label>
-                        <input type="text" id="requestAddress" class="form-input" placeholder="Город, улица, дом, квартира" required>
-                        <div class="error-message" id="addressError">Введите адрес</div>
+                        <input type="text" id="requestAddress" class="form-input" placeholder="Город, улица, дом" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="contactPhone" class="form-label required">Контактный телефон</label>
                         <input type="tel" id="contactPhone" class="form-input" placeholder="+7 (999) 123-45-67" required>
-                        <div class="error-message" id="contactPhoneError">Введите корректный номер</div>
                     </div>
-                    
-                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label for="serviceDate" class="form-label required">Желаемая дата</label>
                             <input type="date" id="serviceDate" class="form-input" required>
@@ -84,26 +74,16 @@
                             <input type="time" id="serviceTime" class="form-input" required>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label required">Тип оплаты</label>
                         <div style="display: flex; gap: 2rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="radio" name="payment" value="cash" required> Наличные
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="radio" name="payment" value="card" required> Банковская карта
-                            </label>
+                            <label><input type="radio" name="payment" value="cash" required> Наличные</label>
+                            <label><input type="radio" name="payment" value="card" required> Банковская карта</label>
                         </div>
                     </div>
-                    
-                    <div class="form-actions" style="display: flex; gap: 1rem; justify-content: space-between;">
-                        <button type="button" class="btn btn-secondary" onclick="window.location.href='cabinet.html'">
-                            <i class="fas fa-arrow-left"></i> Назад
-                        </button>
-                        <button type="submit" class="btn btn-accent">
-                            <i class="fas fa-paper-plane"></i> Создать заявку
-                        </button>
+                    <div style="display: flex; gap: 1rem; justify-content: space-between;">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='cabinet.html'">← Назад</button>
+                        <button type="submit" class="btn btn-accent">Создать заявку</button>
                     </div>
                 </form>
             </div>
@@ -115,7 +95,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="logo"><span>🎧</span><span>SoundPro</span></div>
-                    <p class="footer-description">Ведущий магазин профессиональных наушников. Продажа, консультации и сервис.</p>
+                    <p class="footer-description">Ведущий магазин профессиональных наушников.</p>
                 </div>
                 <div class="footer-section">
                     <h3 class="footer-title">Контакты</h3>
