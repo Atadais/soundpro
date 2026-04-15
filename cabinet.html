@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>SoundPro - Личный кабинет</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,22 +53,10 @@
             </section>
             
             <div class="user-stats">
-                <div class="stat-card animate">
-                    <div class="stat-number" id="totalRequests">0</div>
-                    <div class="stat-label">Всего заявок</div>
-                </div>
-                <div class="stat-card animate">
-                    <div class="stat-number" id="newRequests">0</div>
-                    <div class="stat-label">Новые заявки</div>
-                </div>
-                <div class="stat-card animate">
-                    <div class="stat-number" id="solvedRequests">0</div>
-                    <div class="stat-label">Решенные</div>
-                </div>
-                <div class="stat-card animate">
-                    <div class="stat-number" id="rejectedRequests">0</div>
-                    <div class="stat-label">Отклоненные</div>
-                </div>
+                <div class="stat-card animate"><div class="stat-number" id="totalRequests">0</div><div class="stat-label">Всего заявок</div></div>
+                <div class="stat-card animate"><div class="stat-number" id="newRequests">0</div><div class="stat-label">Новые заявки</div></div>
+                <div class="stat-card animate"><div class="stat-number" id="solvedRequests">0</div><div class="stat-label">Решенные</div></div>
+                <div class="stat-card animate"><div class="stat-number" id="rejectedRequests">0</div><div class="stat-label">Отклоненные</div></div>
             </div>
             
             <section class="requests-section animate">
@@ -81,9 +69,7 @@
                         <button class="filter-btn" data-filter="rejected">Отклоненные</button>
                     </div>
                 </div>
-                
                 <div class="requests-list" id="requestsList"></div>
-                
                 <div class="empty-state hidden" id="emptyState">
                     <i class="fas fa-inbox"></i>
                     <h3>Заявок пока нет</h3>
@@ -99,7 +85,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="logo"><span>🎧</span><span>SoundPro</span></div>
-                    <p class="footer-description">Ведущий магазин профессиональных наушников. Продажа, консультации и сервис.</p>
+                    <p class="footer-description">Ведущий магазин профессиональных наушников.</p>
                 </div>
                 <div class="footer-section">
                     <h3 class="footer-title">Контакты</h3>
