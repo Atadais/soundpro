@@ -15,7 +15,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
-                    <span>🎧</span>
+                    <img src="logo/logo.jpg" alt="SoundPro" class="logo-img">
                     <span>SoundPro</span>
                 </a>
                 <nav class="main-nav">
@@ -52,12 +52,22 @@
                 </div>
                 <div class="filter-section">
                     <h3 class="filter-title">Тип наушников</h3>
-                    <div class="filter-options" id="typeFilters"></div>
+                    <div class="filter-options" id="typeFilters">
+                        <button class="filter-btn active" data-type="all">Все</button>
+                        <button class="filter-btn" data-type="беспроводные">Беспроводные</button>
+                        <button class="filter-btn" data-type="студийные">Студийные</button>
+                        <button class="filter-btn" data-type="мониторные">Мониторные</button>
+                        <button class="filter-btn" data-type="открытые">Открытые</button>
+                        <button class="filter-btn" data-type="закрытые">Закрытые</button>
+                        <button class="filter-btn" data-type="внутриканальные">Внутриканальные</button>
+                        <button class="filter-btn" data-type="накладные">Накладные</button>
+                        <button class="filter-btn" data-type="игровые">Игровые</button>
+                    </div>
                 </div>
                 <div class="filter-section">
                     <h3 class="filter-title">Цена</h3>
                     <div class="filter-options" id="priceFilters">
-                        <button class="filter-btn" data-price="all">Все</button>
+                        <button class="filter-btn active" data-price="all">Все</button>
                         <button class="filter-btn" data-price="low">До 10 000 ₽</button>
                         <button class="filter-btn" data-price="medium">10 000 - 30 000 ₽</button>
                         <button class="filter-btn" data-price="high">От 30 000 ₽</button>
@@ -65,8 +75,93 @@
                 </div>
             </div>
             
-            <div class="catalog-grid" id="equipmentGrid"></div>
+            <div class="catalog-grid" id="equipmentGrid">
+                <!-- Карточка 1: Sony WH-1000XM5 -->
+                <article class="news-card animate" data-id="1">
+                    <div class="news-image-container">
+                        <img src="images/Sony WH-1000XM5.jpg" alt="Sony WH-1000XM5" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Беспроводные</span>
+                        <span class="news-date">34 990 ₽</span>
+                        <h3 class="news-title">Sony WH-1000XM5</h3>
+                        <p class="news-description">Флагманские беспроводные наушники с лучшим в классе шумоподавлением.</p>
+                        <span class="news-link">Подробнее</span>
+                    </div>
+                </article>
+                
+                <!-- Карточка 2: Beyerdynamic DT 770 Pro -->
+                <article class="news-card animate" data-id="2">
+                    <div class="news-image-container">
+                        <img src="images/beyerdynamic-dt770.jpg" alt="Beyerdynamic DT 770 Pro" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Студийные</span>
+                        <span class="news-date">18 990 ₽</span>
+                        <h3 class="news-title">Beyerdynamic DT 770 Pro</h3>
+                        <p class="news-description">Легендарные студийные наушники для профессиональной работы со звуком.</p>
+                        <span class="news-link">Подробнее</span>
+                    </div>
+                </article>
+                
+                <!-- Карточка 3: Sennheiser HD 600 -->
+                <article class="news-card animate" data-id="3">
+                    <div class="news-image-container">
+                        <img src="images/sennheiser-hd600.jpg" alt="Sennheiser HD 600" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Открытые</span>
+                        <span class="news-date">28 990 ₽</span>
+                        <h3 class="news-title">Sennheiser HD 600</h3>
+                        <p class="news-description">Эталонные открытые наушники для аудиофилов и профессионалов.</p>
+                        <span class="news-link">Подробнее</span>
+                    </div>
+                </article>
+                
+                <!-- Карточка 4: Audio-Technica ATH-M50x -->
+                <article class="news-card animate" data-id="4">
+                    <div class="news-image-container">
+                        <img src="images/audiotechnica-m50x.jpg" alt="Audio-Technica ATH-M50x" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Мониторные</span>
+                        <span class="news-date">15 990 ₽</span>
+                        <h3 class="news-title">Audio-Technica ATH-M50x</h3>
+                        <p class="news-description">Популярные мониторные наушники для студии и дома.</p>
+                        <span class="news-link">Подробнее</span>
+                    </div>
+                </article>
+                
+                <!-- Карточка 5: Bose QuietComfort 45 -->
+                <article class="news-card animate" data-id="5">
+                    <div class="news-image-container">
+                        <img src="images/bose-qc45.jpg" alt="Bose QuietComfort 45" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Беспроводные</span>
+                        <span class="news-date">29 990 ₽</span>
+                        <h3 class="news-title">Bose QuietComfort 45</h3>
+                        <p class="news-description">Комфортные беспроводные наушники с отличным шумоподавлением.</p>
+                        <span class="news-link">Подробнее</span>
+                    </div>
+                </article>
+                
+                <!-- Карточка 6: AKG K712 Pro -->
+                <article class="news-card animate" data-id="6">
+                    <div class="news-image-container">
+                        <img src="images/akg-k712.jpg" alt="AKG K712 Pro" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">Открытые</span>
+                        <span class="news-date">22 990 ₽</span>
+                        <h3 class="news-title">AKG K712 Pro</h3>
+                        <p class="news-description">Профессиональные открытые наушники для сведения и мастеринга.</p>
+                        <span class="news-link">Подробнее</span>
+                    </div>
+                </article>
+            </div>
             
+            <!-- Кнопка "Показать еще" -->
             <div class="text-center mt-3">
                 <button class="btn btn-accent" id="loadMoreBtn"><i class="fas fa-sync-alt"></i> Показать еще</button>
             </div>
@@ -77,7 +172,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="logo"><span>🎧</span><span>SoundPro</span></div>
+                    <div class="logo">
+                        <img src="logo/logo.jpg" alt="SoundPro" class="logo-img">
+                        <span>SoundPro</span>
+                    </div>
                     <p class="footer-description">Ведущий магазин профессиональных наушников.</p>
                 </div>
                 <div class="footer-section">
