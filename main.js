@@ -1,6 +1,7 @@
 // main.js - Единый JavaScript для всего сайта SoundPro
 
 document.addEventListener('DOMContentLoaded', function() {
+    initMobileMenu();
     initNavigation();
     initScrollAnimations();
     initPhoneMasks();
@@ -28,6 +29,69 @@ function getCurrentPage() {
     const path = window.location.pathname.split('/').pop();
     if (!path || path === 'index.html') return 'index';
     return path.replace('.html', '');
+}
+
+// ==================== МОБИЛЬНОЕ МЕНЮ ====================
+function initMobileMenu() {
+    const headerContent = document.querySelector('.header-content');
+    const mainNav = document.querySelector('.main-nav');
+    
+    if (!headerContent || !mainNav) return;
+    
+    const burgerBtn = document.createElement('button');
+    burgerBtn.className = 'burger-btn';
+    burgerBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    burgerBtn.setAttribute('aria-label', 'Меню');
+    
+    const logo = headerContent.querySelector('.logo');
+    if (logo) {
+        logo.insertAdjacentElement('afterend', burgerBtn);
+    }
+    
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
+    document.body.appendChild(overlay);
+    
+    function closeMenu() {
+        mainNav.classList.remove('active');
+        overlay.classList.remove('active');
+        burgerBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        document.body.style.overflow = '';
+    }
+    
+    function openMenu() {
+        mainNav.classList.add('active');
+        overlay.classList.add('active');
+        burgerBtn.innerHTML = '<i class="fas fa-times"></i>';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    burgerBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (mainNav.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+    
+    overlay.addEventListener('click', closeMenu);
+    
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+    
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 992) {
+            closeMenu();
+        }
+    });
 }
 
 // ==================== БАЗОВЫЕ ФУНКЦИИ ====================
@@ -284,42 +348,42 @@ function loadEquipment() {
             image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500', 
             specs: ['Bluetooth 5.2', 'Активное шумоподавление', '30 часов работы', 'Сенсорное управление'], 
             description: 'Флагманские беспроводные наушники с лучшим в классе шумоподавлением.',
-            fullDescription: 'Sony WH-1000XM5 — это флагманские беспроводные наушники с лучшим в отрасли шумоподавлением. Восемь микрофонов и два процессора обеспечивают невероятное качество шумоподавления. Наушники автоматически оптимизируют шумоподавление в зависимости от условий окружающей среды. Технология Precise Voice Pickup использует четыре микрофона и датчик костной проводимости для идеальной передачи голоса при звонках.'
+            fullDescription: 'Sony WH-1000XM5 — это флагманские беспроводные наушники с лучшим в отрасли шумоподавлением. Восемь микрофонов и два процессора обеспечивают невероятное качество шумоподавления. Наушники автоматически оптимизируют шумоподавление в зависимости от условий окружающей среды.'
         },
         { 
             id: 2, name: 'Beyerdynamic DT 770 Pro', category: 'Студийные', price: 18990, 
             image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500', 
             specs: ['80 Ом', 'Частоты: 5-35000 Гц', 'Закрытый тип', 'Кабель 3м'], 
             description: 'Легендарные студийные наушники для профессиональной работы со звуком.',
-            fullDescription: 'Beyerdynamic DT 770 Pro — легендарные студийные наушники, используемые профессионалами по всему миру. Закрытая конструкция обеспечивает отличную звукоизоляцию, что делает их идеальными для записи вокала и инструментов. Точное и детальное звучание с глубокими басами и чистыми высокими частотами. Прочная конструкция и сменные амбушюры гарантируют долгий срок службы.'
+            fullDescription: 'Beyerdynamic DT 770 Pro — легендарные студийные наушники, используемые профессионалами по всему миру. Закрытая конструкция обеспечивает отличную звукоизоляцию, что делает их идеальными для записи вокала и инструментов.'
         },
         { 
             id: 3, name: 'Sennheiser HD 600', category: 'Открытые', price: 28990, 
             image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500', 
             specs: ['300 Ом', 'Частоты: 12-40500 Гц', 'Открытый тип', 'Кабель 3м'], 
             description: 'Эталонные открытые наушники для аудиофилов и профессионалов.',
-            fullDescription: 'Sennheiser HD 600 — эталонные открытые наушники, признанный стандарт в мире аудио. Благодаря открытой конструкции и специально разработанным динамикам обеспечивают невероятно натуральное и просторное звучание. Идеально подходят для критического прослушивания, сведения и мастеринга. Лёгкая конструкция и велюровые амбушюры обеспечивают комфорт даже при длительном использовании.'
+            fullDescription: 'Sennheiser HD 600 — эталонные открытые наушники, признанный стандарт в мире аудио. Благодаря открытой конструкции и специально разработанным динамикам обеспечивают невероятно натуральное и просторное звучание.'
         },
         { 
             id: 4, name: 'Audio-Technica ATH-M50x', category: 'Мониторные', price: 15990, 
             image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=500', 
             specs: ['38 Ом', 'Частоты: 15-28000 Гц', 'Закрытый тип', 'Съемный кабель'], 
             description: 'Популярные мониторные наушники для студии и дома.',
-            fullDescription: 'Audio-Technica ATH-M50x — одни из самых популярных мониторных наушников в мире. Обеспечивают точное и сбалансированное звучание с отличной детализацией. Складная конструкция и съёмные кабели делают их удобными для транспортировки. Идеальный выбор для звукорежиссёров, музыкантов и просто любителей качественного звука.'
+            fullDescription: 'Audio-Technica ATH-M50x — одни из самых популярных мониторных наушников в мире. Обеспечивают точное и сбалансированное звучание с отличной детализацией.'
         },
         { 
             id: 5, name: 'Bose QuietComfort 45', category: 'Беспроводные', price: 29990, 
             image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500', 
             specs: ['Bluetooth 5.1', 'Активное шумоподавление', '24 часа работы', 'Режим прозрачности'], 
             description: 'Комфортные беспроводные наушники с отличным шумоподавлением.',
-            fullDescription: 'Bose QuietComfort 45 — эталон комфорта среди беспроводных наушников. Легендарная система шумоподавления Bose эффективно блокирует внешние шумы, а режим Aware позволяет слышать окружающий мир, не снимая наушники. Мягкие амбушюры и лёгкая конструкция позволяют носить их весь день без усталости. Качество звука оптимизировано для любых жанров музыки.'
+            fullDescription: 'Bose QuietComfort 45 — эталон комфорта среди беспроводных наушников. Легендарная система шумоподавления Bose эффективно блокирует внешние шумы.'
         },
         { 
             id: 6, name: 'AKG K712 Pro', category: 'Открытые', price: 22990, 
             image: 'https://images.unsplash.com/photo-1505740106531-4243f3831c78?w=500', 
             specs: ['62 Ом', 'Частоты: 10-39800 Гц', 'Открытый тип', 'Кабель 3м'], 
             description: 'Профессиональные открытые наушники для сведения и мастеринга.',
-            fullDescription: 'AKG K712 Pro — профессиональные открытые наушники для точного мониторинга. Обеспечивают широкую звуковую сцену и исключительную детализацию, что делает их идеальными для сведения и мастеринга. Технология плоских звуковых катушек обеспечивает точное воспроизведение импульсных сигналов. Мягкое велюровое оголовье и амбушюры с эффектом памяти гарантируют максимальный комфорт.'
+            fullDescription: 'AKG K712 Pro — профессиональные открытые наушники для точного мониторинга. Обеспечивают широкую звуковую сцену и исключительную детализацию.'
         }
     ];
     
@@ -388,8 +452,8 @@ function loadMoreEquipment() {
     setTimeout(() => {
         if (loadMoreCount === 0) {
             const newEquipment = [
-                { id: 7, name: 'Shure SRH840', category: 'Мониторные', price: 12990, image: 'https://images.unsplash.com/photo-1599669454699-248893623440?w=500', specs: ['44 Ом', 'Частоты: 5-25000 Гц', 'Закрытый тип', 'Съемный кабель'], description: 'Профессиональные мониторные наушники.', fullDescription: 'Shure SRH840 — профессиональные мониторные наушники с точным и детальным звучанием. Оптимизированы для критического прослушивания и мониторинга.' },
-                { id: 8, name: 'JBL Quantum 800', category: 'Игровые', price: 14990, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=500', specs: ['Bluetooth 5.0', 'Объемный звук', '14 часов работы', 'Микрофон'], description: 'Игровые наушники с объемным звуком.', fullDescription: 'JBL Quantum 800 — игровые наушники с объёмным звуком JBL QuantumSURROUND. Активное шумоподавление и отключаемый микрофон делают их универсальными.' }
+                { id: 7, name: 'Shure SRH840', category: 'Мониторные', price: 12990, image: 'https://images.unsplash.com/photo-1599669454699-248893623440?w=500', specs: ['44 Ом', 'Частоты: 5-25000 Гц', 'Закрытый тип', 'Съемный кабель'], description: 'Профессиональные мониторные наушники.', fullDescription: 'Shure SRH840 — профессиональные мониторные наушники с точным и детальным звучанием.' },
+                { id: 8, name: 'JBL Quantum 800', category: 'Игровые', price: 14990, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=500', specs: ['Bluetooth 5.0', 'Объемный звук', '14 часов работы', 'Микрофон'], description: 'Игровые наушники с объемным звуком.', fullDescription: 'JBL Quantum 800 — игровые наушники с объёмным звуком JBL QuantumSURROUND.' }
             ];
             const existing = JSON.parse(localStorage.getItem('equipment') || '[]');
             localStorage.setItem('equipment', JSON.stringify([...existing, ...newEquipment]));
