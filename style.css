@@ -444,33 +444,51 @@ a:hover { color: var(--primary-light); }
     gap: 1.5rem;
 }
 
-.equipment-card {
+/* ========== КАРТОЧКИ ТОВАРОВ ========== */
+.news-card {
     background-color: white;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    height: 100%;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.equipment-card:hover {
-    transform: translateY(-8px);
+.news-card:hover {
+    transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }
 
-.equipment-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+.news-image-container {
+    width: 265px;
+    height: 280px;
+    display: block;                 /* ← меняем flex на block */
+    background: #f9f9f9;
+    overflow: hidden;
+    border-radius: var(--radius) var(--radius) 0 0;
+    margin: 0 auto;
+    position: relative;
 }
 
-.equipment-card:hover .equipment-image { transform: scale(1.05); }
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;              /* ← заполняет контейнер, обрезая лишнее */
+    object-position: center;        /* ← можно менять: top, bottom, left, right, 50% 50% */
+    display: block;
+}
 
-.equipment-content { padding: 1.5rem; }
+.news-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 
-.equipment-category {
+.news-category {
     display: inline-block;
     background-color: var(--primary-color);
     color: white;
@@ -478,39 +496,51 @@ a:hover { color: var(--primary-light); }
     border-radius: 1.25rem;
     font-size: 0.75rem;
     font-weight: 500;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
 }
 
-.equipment-title {
+.news-date {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.news-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 0.75rem;
+    line-height: 1.4;
 }
 
-.equipment-specs {
-    list-style: none;
-    margin-bottom: 1rem;
-}
-
-.equipment-specs li {
-    margin-bottom: 0.5rem;
+.news-description {
     color: var(--text-light);
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
 }
 
-.equipment-specs li i { color: var(--accent-color); }
-
-.equipment-price {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
+.news-link {
     color: var(--accent-color);
-    margin-bottom: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.news-link:after {
+    content: '→';
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-link:after {
+    transform: translateX(5px);
 }
 
 /* Личный кабинет */
@@ -808,84 +838,6 @@ a:hover { color: var(--primary-light); }
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-}
-
-.news-card {
-    background-color: white;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.news-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-}
-
-.news-image-container {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-}
-
-.news-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.news-card:hover .news-image { transform: scale(1.1); }
-
-.news-content { padding: 1.5rem; }
-
-.news-category {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-}
-
-.news-date {
-    color: var(--text-light);
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
-    margin-left: 0.5rem;
-}
-
-.news-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 0.75rem;
-}
-
-.news-description {
-    color: var(--text-light);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.news-link {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-}
-
-.news-link:after {
-    content: '→';
-    margin-left: 0.5rem;
 }
 
 .features-section {
@@ -1228,7 +1180,8 @@ tr:hover { background-color: #f8f9fa; }
 .product-modal-image {
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #f5f5f5;
     flex-shrink: 0;
 }
 
@@ -1436,7 +1389,6 @@ tr:hover { background-color: #f8f9fa; }
         width: auto;
     }
     
-    .equipment-title,
     .news-title {
         font-size: 1.1rem;
     }
@@ -1513,4 +1465,18 @@ tr:hover { background-color: #f8f9fa; }
     .filter-section { flex: 1; margin-bottom: 0; }
     .team-grid { grid-template-columns: repeat(3, 1fr); }
     .about-content { grid-template-columns: 2fr 1fr; }
+}
+
+/* Стили для логотипа */
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: var(--radius);
+}
+
+.footer .logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
